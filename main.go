@@ -12,10 +12,10 @@ func main() {
 	/* Routing */
 	router := mux.NewRouter()
 	router.HandleFunc("/", controllers.GetAllRecord).Methods("GET")
-	// router.HandleFunc("/{id}", controllers.GetRecord).Methods("GET")
-	// router.HandleFunc("/", controllers.AddSingleRecord).Methods("POST")
-	// router.HandleFunc("/{id}", controllers.UpdateRecord).Methods("PUT")
-	// router.HandleFunc("/{id}", controllers.DeleteRecord).Methods("DELETE")
+	router.HandleFunc("/{id}", controllers.GetRecord).Methods("GET")
+	router.HandleFunc("/", controllers.AddRecord).Methods("POST")
+	router.HandleFunc("/{id}", controllers.UpdateRecord).Methods("PUT")
+	router.HandleFunc("/{id}", controllers.DeleteRecord).Methods("DELETE")
 
 	/* Start web server */
 	http.ListenAndServe(":8080", router)

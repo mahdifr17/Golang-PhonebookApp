@@ -6,7 +6,7 @@ import (
 
 // Record is a struct that represent phonebook data
 type Record struct {
-	gorm.Model
-	Name  string `json:"Name,omitempty"`
-	Phone string `json:"Phone,omitempty"`
+	gorm.Model `json:"-"` // Ignore ID, CreatedAt, UpdatedAt, DeletedAt
+	Name       string     `json:"name,omitempty" gorm:"not null"`
+	Phone      string     `json:"phone,omitempty" gorm:"not null;unique"`
 }
